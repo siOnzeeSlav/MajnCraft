@@ -1,0 +1,37 @@
+name: MajnCraft Auctions
+version: 1.0
+description: Plugin what gives into game Auctions
+# We could place every author in the authors list, but chose not to for illustrative purposes
+# Also, having an author distinguishes that person as the project lead, and ensures their 
+# name is displayed first
+author: siOnzee
+authors: [Sekiphp, Sognus] 
+website: http://majncraft.cz/
+
+main: cz.sionzee.MajnCraft.Auction.Index
+database: false
+
+commands:
+  ban:
+    description: Disallow access to player for using plugin
+    permission: MajnCraft.ban
+    aliases: [b]
+    usage: Syntax error! Simply type /&lt;command&gt <player>; to ban player.
+  password:
+    description: Create password for auction
+    aliases: [pass, p]
+    permission: MajnCraft.password
+    usage: Syntax error! Simply type /&lt;command&gt <password>; to protect auction.
+
+permissions:
+  MajnCraft.*:
+    description: Gives access to all Auction commands
+    children:
+      MajnCraft.ban: true
+      MajnCraft.password: true
+  MajnCraft.ban:
+    description: Allows you to ban player
+    default: op
+  MajnCraft.password:
+    description: Allows you to protect auction
+    default: op
