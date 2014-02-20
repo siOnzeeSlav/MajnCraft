@@ -15,7 +15,6 @@ public class Index extends JavaPlugin {
         players = new HashMap<String, MajnCraftPlayer>();
         ConfigurationManager.initialize();
         if (!DatabaseManager.initialize()) {
-            Log.$(ErrorMessages.NODATABASECONFIG);
             this.setEnabled(false);
         }
         getCommand("ma").setExecutor(new CommandHandler());

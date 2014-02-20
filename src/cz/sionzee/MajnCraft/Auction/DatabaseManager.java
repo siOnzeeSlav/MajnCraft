@@ -24,12 +24,15 @@ public class DatabaseManager {
         int port = config.getInt("MySQL.Port");
 
         if (username.length() == 0 || password.length() == 0 || database.length() == 0 || host.length() == 0 || tablePrefix.length() == 0 || port == 0) {
+            Log.$(ErrorMessages.NODATABASECONFIG);
             return false;
         }
 
         try {
             con = DriverManager.getConnection(String.format("jdbc:mysql://{0}:{1}/{2}", host, port, database), username, password);
         } catch (SQLException e) {
+            Log.$(ErrorMessages.DATABASEWRONGPARAMETERS);
+            Log.$("ERROR: " + e.getMessage());
             e.printStackTrace();
             return false;
         }
@@ -37,7 +40,7 @@ public class DatabaseManager {
         try {
             sta = con.createStatement();
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
+            Log.$("ERROR: " + e.getMessage());
             e.printStackTrace();
             return false;
         }
@@ -45,8 +48,10 @@ public class DatabaseManager {
         try {
             sta.executeQuery(String.format("CREATE TABLE IF NOT EXISTS {0} (int id)", tablePrefix + "auctions"));
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
+            Log.$(ErrorMessages.TABLESCHECKERROR);
+            Log.$("ERROR: " + e.getMessage());
             e.printStackTrace();
+            return false;
         }
 
         return true;
