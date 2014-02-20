@@ -14,9 +14,11 @@ public class OnBlockPlaceEvent {
 
         if (block.getType() == Material.SIGN || block.getType() == Material.SIGN_POST) {
             Sign sign = (Sign) block.getState();
-            String[] auctionLines = SettingManager.getSignLines();
-            if (sign.getLine(0) == auctionLines[0]) {
+            String[] inputLines = SettingManager.getSignInputLines();
+            String[] outputLines = SettingManager.getSignInputLines();
 
+            if (sign.getLine(0) == inputLines[0] || (sign.getLine(0) == outputLines[0])) {
+                // TODO: Jedná se o aukční cedulku.
             }
         }
 

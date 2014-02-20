@@ -4,15 +4,21 @@ import org.bukkit.configuration.Configuration;
 
 public class SettingManager {
 
-    static String[] signLines;
+    static String[] signInputLines;
+    static String[] signOutputLines;
 
     public static void initialize() {
         Configuration config = ConfigurationManager.getConfig();
-        signLines = (String[]) config.getStringList("Sign.lines").toArray();
+        signInputLines = (String[]) config.getStringList("Sign.input.lines").toArray();
+        signOutputLines = (String[]) config.getStringList("Sign.output.lines").toArray();
     }
 
-    public static String[] getSignLines() {
-        return signLines;
+    public static String[] getSignInputLines() {
+        return signInputLines;
+    }
+
+    public static String[] getSignOutputLines() {
+        return signOutputLines;
     }
 
 }
