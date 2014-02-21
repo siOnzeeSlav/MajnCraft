@@ -11,11 +11,8 @@ import org.bukkit.entity.Player;
 
 import cz.sionzee.MajnCraft.Auction.Commands.Ban;
 import cz.sionzee.MajnCraft.Auction.Commands.Create;
-import cz.sionzee.MajnCraft.Auction.Commands.Money;
 import cz.sionzee.MajnCraft.Auction.Commands.Password;
-import cz.sionzee.MajnCraft.Auction.Commands.Pay;
 import cz.sionzee.MajnCraft.Auction.Commands.Remove;
-import cz.sionzee.MajnCraft.Auction.Commands.Top;
 import cz.sionzee.MajnCraft.Auction.Interfaces.ICommand;
 
 public class CommandHandler implements CommandExecutor {
@@ -31,9 +28,6 @@ public class CommandHandler implements CommandExecutor {
         commands.put("password", new Password());
         commands.put("ban", new Ban());
         commands.put("create", new Create());
-        commands.put("money", new Money());
-        commands.put("pay", new Pay());
-        commands.put("top", new Top());
         commands.put("remove", new Remove());
     }
 
