@@ -22,16 +22,60 @@ commands:
     aliases: [pass, p]
     permission: MajnCraft.password
     usage: Syntax error! Simply type /&lt;command&gt <password>; to protect auction.
-
+  create:
+    description: Create auction
+    aliases: [c]
+    permission: MajnCraft.create
+    usage: Syntax error! Simply type /&lt;command&gt; to create auction.
+  money:
+    description: Show how many money player have
+    aliases: [m]
+    permission: MajnCraft.money
+    usage: Syntax error! Simply type /&lt;command&gt; to show money.
+  pay:
+    description: Give player money
+    aliases: [pa]
+    permission: MajnCraft.pay
+    usage: Syntax error! Simply type /&lt;command&gt <player> <amout>; to pay player.
+  top:
+    description: Show top players
+    aliases: [t]
+    permission: MajnCraft.top
+    usage: Syntax error! Simply type /&lt;command&gt; to display players.
+  remove:
+    description: Remove auction
+    aliases: [pa]
+    permission: MajnCraft.remove
+    usage: Syntax error! Simply type /&lt;command&gt; to remove auction.
 permissions:
   MajnCraft.*:
     description: Gives access to all Auction commands
     children:
       MajnCraft.ban: true
       MajnCraft.password: true
+      MajnCraft.create: true
+      MajnCraft.money: true
+      MajnCraft.pay: true
+      MajnCraft.top: true
+      MajnCraft.remove: true
   MajnCraft.ban:
     description: Allows you to ban player
     default: op
   MajnCraft.password:
     description: Allows you to protect auction
+    default: op
+  MajnCraft.create:
+    description: Allows you to create auction
+    default: op
+  MajnCraft.money:
+    description: Allows you to show your money
+    default: true
+  MajnCraft.pay:
+    description: Allows you to pay money
+    default: true
+  MajnCraft.top:
+    description: Allows you to show top players
+    default: true
+  MajnCraft.remove:
+    description: Allows you to remove auction
     default: op
