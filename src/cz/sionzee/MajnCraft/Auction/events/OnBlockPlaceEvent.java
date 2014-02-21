@@ -5,7 +5,7 @@ import org.bukkit.block.Block;
 import org.bukkit.block.Sign;
 import org.bukkit.event.block.BlockPlaceEvent;
 
-import cz.sionzee.MajnCraft.Auction.SettingManager;
+import cz.sionzee.MajnCraft.Auction.Managers.SettingManager;
 
 public class OnBlockPlaceEvent {
 

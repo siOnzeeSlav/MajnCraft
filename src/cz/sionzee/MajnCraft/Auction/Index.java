@@ -4,6 +4,9 @@ import java.util.HashMap;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
+import cz.sionzee.MajnCraft.Auction.Managers.ConfigurationManager;
+import cz.sionzee.MajnCraft.Auction.Managers.DatabaseManager;
+
 public class Index extends JavaPlugin {
 
     public static HashMap<String, MajnCraftPlayer> players;

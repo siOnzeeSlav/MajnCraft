@@ -1,6 +1,8 @@
-package cz.sionzee.MajnCraft.Auction;
+package cz.sionzee.MajnCraft.Auction.Managers;
 
 import org.bukkit.configuration.Configuration;
+
+import cz.sionzee.MajnCraft.Auction.ConfigurationManager;
 
 public class SettingManager {
 
