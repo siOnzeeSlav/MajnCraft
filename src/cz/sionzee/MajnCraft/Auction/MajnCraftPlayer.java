@@ -2,14 +2,18 @@ package cz.sionzee.MajnCraft.Auction;
 
 import org.bukkit.entity.Player;
 
-import cz.sionzee.MajnCraft.Auction.Managers.ConfigurationManager;
-
-public class MajnCraftPlayer {
+public class MajnCraftPlayer extends Account {
 
     Player player;
 
-    public MajnCraftPlayer(Player player) {
+    public MajnCraftPlayer(Player player, int money) {
+        super(money, player.getName());
+
         this.player = player;
+    }
+
+    public Account getAccount() {
+        return this;
     }
 
 }
