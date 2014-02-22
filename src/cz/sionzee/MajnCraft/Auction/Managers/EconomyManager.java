@@ -7,9 +7,11 @@ import cz.sionzee.MajnCraft.Auction.MajnCraftPlayer;
 public class EconomyManager {
 
     static HashMap<String, MajnCraftPlayer> players;
+    static boolean enabled;
 
     public static void initialize() {
         players = new HashMap<String, MajnCraftPlayer>();
+        enabled = true;
     }
 
     public static void addPlayer(MajnCraftPlayer mc, String playerName) {
@@ -20,4 +22,7 @@ public class EconomyManager {
         return players.get(name);
     }
 
+    public static boolean isEnabled() {
+        return enabled;
+    }
 }
