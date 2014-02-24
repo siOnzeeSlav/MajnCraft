@@ -46,6 +46,8 @@ public class EconomyManager {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
+        return 0;
     }
 
     public static int getMoney(String name) {
