@@ -28,8 +28,10 @@ public class OnPlayerKickJoinQuitEvent implements Listener {
 
         boolean readMoney = false;
         try {
-            if (rs.next()) {
+            if (!rs.next()) {
                 readMoney = true;
+            } else {
+                DatabaseManager.executeQuery(String.format("INSERT INTO `%s`.`%s` (playername, money) VALUES ('%s', '%d')", DatabaseManager.getDatabaseName(), DatabaseManager.getTablePrefix() + "players", playerName, 0));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -37,7 +39,7 @@ public class OnPlayerKickJoinQuitEvent implements Listener {
 
         int playerMoney = 0;
 
-        if (readMoney)
+        if (readMoney) {
             try {
                 rs = DatabaseManager.executeQuery(String.format("SELECT money FROM `%s`.`%s` WHERE `playername`='%s' ENGINE = InnoDB", DatabaseManager.getDatabaseName(), DatabaseManager.getTablePrefix() + "players", playerName));
                 rs.next();
@@ -45,11 +47,6 @@ public class OnPlayerKickJoinQuitEvent implements Listener {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-
-        try {
-            playerMoney = rs.getInt(0);
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
 
         MajnCraftPlayer mcp = new MajnCraftPlayer(player, playerMoney);
@@ -60,12 +57,16 @@ public class OnPlayerKickJoinQuitEvent implements Listener {
 
     @EventHandler
     public void onKick(PlayerKickEvent event) {
-
+        Player player = event.getPlayer();
+        String playerName = player.getName();
+        EconomyManager.removePlayer(playerName);
     }
 
     @EventHandler
     public void onQuit(PlayerQuitEvent event) {
-
+        Player player = event.getPlayer();
+        String playerName = player.getName();
+        EconomyManager.removePlayer(playerName);
     }
 
 }
