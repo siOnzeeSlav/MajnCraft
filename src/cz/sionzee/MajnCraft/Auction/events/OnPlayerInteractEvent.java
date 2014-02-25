@@ -50,6 +50,15 @@ public class OnPlayerInteractEvent implements Listener {
                 p.sendMessage(Messages.get("SIGN_PLACED"));
                 Storer.playernames.remove(playerName);
             }
+
+            if (Storer.playernamesremove.contains(playerName)) {
+                Location blockLocation = block.getLocation();
+                Sign sign = (Sign) blockLocation.getWorld().getBlockAt(blockLocation).getState();
+                if (sign.getLine(0).equals("[MineAuction]")) {
+                    blockLocation.getWorld().getBlockAt(blockLocation).setType(Material.AIR);
+                    p.sendMessage(Messages.get("SIGN_REMOVED"));
+                }
+            }
         }
     }
 
