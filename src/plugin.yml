@@ -48,6 +48,11 @@ commands:
     aliases: [pa]
     permission: MajnCraft.remove
     usage: Syntax error! Simply type /&lt;command&gt; to remove auction.
+  help:
+    description: Show all commands
+    aliases: [h]
+    permission: MajnCraft.help
+    usage: Syntax error! Simply type /&lt;command&gt; to show help.
 permissions:
   MajnCraft.*:
     description: Gives access to all Auction commands
@@ -59,6 +64,7 @@ permissions:
       MajnCraft.pay: true
       MajnCraft.top: true
       MajnCraft.remove: true
+      MajnCraft.help: true
   MajnCraft.ban:
     description: Allows you to ban player
     default: op
@@ -80,3 +86,6 @@ permissions:
   MajnCraft.remove:
     description: Allows you to remove auction
     default: op
+  MajnCraft.help:
+    description: Allows you to show help
+    default: true
