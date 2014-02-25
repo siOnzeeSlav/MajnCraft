@@ -24,7 +24,7 @@ public class OnPlayerKickJoinQuitEvent implements Listener {
 
         ResultSet rs;
 
-        rs = DatabaseManager.executeQuery(String.format("SELECT COUNT(*) FROM `%s`.`%s` WHERE `playername`='%s' ENGINE = InnoDB", DatabaseManager.getDatabaseName(), DatabaseManager.getTablePrefix() + "players", playerName));
+        rs = DatabaseManager.executeQuery(String.format("SELECT COUNT(*) FROM `%s`.`%s` WHERE `playername`='%s'", DatabaseManager.getDatabaseName(), DatabaseManager.getTablePrefix() + "players", playerName));
 
         boolean readMoney = false;
         try {
@@ -41,7 +41,7 @@ public class OnPlayerKickJoinQuitEvent implements Listener {
 
         if (readMoney) {
             try {
-                rs = DatabaseManager.executeQuery(String.format("SELECT money FROM `%s`.`%s` WHERE `playername`='%s' ENGINE = InnoDB", DatabaseManager.getDatabaseName(), DatabaseManager.getTablePrefix() + "players", playerName));
+                rs = DatabaseManager.executeQuery(String.format("SELECT money FROM `%s`.`%s` WHERE `playername`='%s'", DatabaseManager.getDatabaseName(), DatabaseManager.getTablePrefix() + "players", playerName));
                 rs.next();
                 playerMoney = rs.getInt(0);
             } catch (SQLException e) {
@@ -49,7 +49,7 @@ public class OnPlayerKickJoinQuitEvent implements Listener {
             }
         }
 
-        rs = DatabaseManager.executeQuery(String.format("SELECT COUNT(*) FROM `%s`.`%s` WHERE `playername`='%s' ENGINE = InnoDB", DatabaseManager.getDatabaseName(), DatabaseManager.getTablePrefix() + "players", playerName));
+        rs = DatabaseManager.executeQuery(String.format("SELECT COUNT(*) FROM `%s`.`%s` WHERE `playername`='%s'", DatabaseManager.getDatabaseName(), DatabaseManager.getTablePrefix() + "players", playerName));
 
         boolean access = true;
 
