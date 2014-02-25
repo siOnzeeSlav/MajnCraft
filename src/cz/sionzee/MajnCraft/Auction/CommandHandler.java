@@ -2,6 +2,7 @@ package cz.sionzee.MajnCraft.Auction;
 
 import cz.sionzee.MajnCraft.Auction.Commands.*;
 import cz.sionzee.MajnCraft.Auction.Interfaces.ICommand;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -34,6 +35,12 @@ public class CommandHandler implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender arg0, Command arg1, String arg2, String[] arg3) {
         Player p = (Player) arg0;
+
+        if (arg3.length == 0) {
+            p.sendMessage(ChatColor.GOLD + "/ma help");
+            return true;
+        }
+
         String cmd = arg3[0].toLowerCase();
 
         if (!commands.containsKey(cmd)) {
@@ -59,7 +66,7 @@ public class CommandHandler implements CommandExecutor {
         for (int i = 1; i < args.length; i++) {
             arguments.add(args[i]);
         }
-        return (String[]) arguments.toArray();
+        return arguments.toArray(new String[arguments.size()]);
     }
 
 }
