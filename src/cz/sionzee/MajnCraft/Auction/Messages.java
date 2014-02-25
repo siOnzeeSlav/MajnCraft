@@ -58,6 +58,7 @@ public class Messages {
     public static void loadDefault() {
         messages.put("SIGN_OPEN", "Open");
         messages.put("SIGN_PLACED", "You're successfully placed auction sign.");
+        messages.put("SIGN_REMOVED", "You're successfully destroyed auction sign");
         messages.put("AUCTION_MENU_COLLECT", "Collect items");
         messages.put("AUCTION_MENU_COLLECT_LORE", "Pick up your stuff that you bought.");
         messages.put("AUCTION_MENU_GIVEOVER", "Give over items");
@@ -70,6 +71,13 @@ public class Messages {
         messages.put("ECONOMY_PAY_NEED", "To send money you need %d.");
         messages.put("ECONOMY_PAY_SUCCESSFULL", "You're successfull sended %d money.");
         messages.put("ECONOMY_PAY_COLLECTED", "You're collected %d money from %s.");
+        messages.put("HELP_BAN", "Disallow access to auction");
+        messages.put("HELP_CREATE", "Create new auction, press right click place");
+        messages.put("HELP_MONEY", "Show balance");
+        messages.put("HELP_PASSWORD", "Setup password for website");
+        messages.put("HELP_PAY", "Give another player money");
+        messages.put("HELP_REMOVE", "Remove auction, press right click on sign");
+        messages.put("HELP_TOP", "Show top 10 players");
     }
 
     public static String get(String name) {
