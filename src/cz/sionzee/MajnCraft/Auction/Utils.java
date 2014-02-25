@@ -4,7 +4,12 @@ import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 
 /**
  * Project MajnCraft Auctions.
@@ -37,6 +42,31 @@ public class Utils {
                 break;
         }
         return message;
+    }
+
+    public static void generateMessages() {
+        BufferedWriter writer = null;
+        try {
+            writer = new BufferedWriter(new FileWriter(new File(Index.getInstance().getDataFolder() + "/messages/DEFAULT.txt"), true));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        for (Map.Entry<String, String> msgs : Messages.messages.entrySet()) {
+            String name = msgs.getKey();
+            String value = msgs.getValue();
+            String result = name + "=" + value;
+            try {
+                writer.write(result);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        try {
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public enum Type {
