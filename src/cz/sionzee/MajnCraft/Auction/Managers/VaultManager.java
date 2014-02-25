@@ -1,17 +1,15 @@
 package cz.sionzee.MajnCraft.Auction.Managers;
 
+import cz.sionzee.MajnCraft.Auction.Index;
 import net.milkbowl.vault.chat.Chat;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.permission.Permission;
-
 import org.bukkit.plugin.RegisteredServiceProvider;
-
-import cz.sionzee.MajnCraft.Auction.Index;
 
 public class VaultManager {
 
     static Permission permission = null;
-    static Economy economy = null;
+    public static Economy economy = null;
     static Chat chat = null;
 
     public static void initialize() {
