@@ -55,7 +55,10 @@ public class Index extends JavaPlugin {
         Storer.auctionMenu.setItem(8, Utils.createItemStack(Material.WOODEN_DOOR, Messages.get("AUCTION_MENU_EXIT"), Messages.get("AUCTION_MENU_EXIT_LORE")));
         pm.registerEvents(new OnInventoryClickEvent(), this);
         pm.registerEvents(new OnPlayerInteractEvent(), this);
-
+        if (ConfigurationManager.getConfig().getBoolean("Messages")) {
+            Utils.generateMessages();
+            ConfigurationManager.setMessagesFalse();
+        }
     }
 
     @Override
