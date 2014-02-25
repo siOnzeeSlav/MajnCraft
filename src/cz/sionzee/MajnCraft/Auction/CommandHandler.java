@@ -1,22 +1,15 @@
 package cz.sionzee.MajnCraft.Auction;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
+import cz.sionzee.MajnCraft.Auction.Commands.*;
+import cz.sionzee.MajnCraft.Auction.Interfaces.ICommand;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import cz.sionzee.MajnCraft.Auction.Commands.Ban;
-import cz.sionzee.MajnCraft.Auction.Commands.Create;
-import cz.sionzee.MajnCraft.Auction.Commands.Money;
-import cz.sionzee.MajnCraft.Auction.Commands.Password;
-import cz.sionzee.MajnCraft.Auction.Commands.Pay;
-import cz.sionzee.MajnCraft.Auction.Commands.Remove;
-import cz.sionzee.MajnCraft.Auction.Commands.Top;
-import cz.sionzee.MajnCraft.Auction.Interfaces.ICommand;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class CommandHandler implements CommandExecutor {
 
@@ -35,6 +28,7 @@ public class CommandHandler implements CommandExecutor {
         commands.put("pay", new Pay());
         commands.put("top", new Top());
         commands.put("remove", new Remove());
+        commands.put("help", new Help());
     }
 
     @Override
