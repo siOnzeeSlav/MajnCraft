@@ -37,6 +37,8 @@ public class DatabaseManager {
 
         Configuration config = ConfigurationManager.getConfig();
 
+        EconomyManager.enabled = config.getBoolean("Vault");
+
         username = config.getString("Database.Username");
         password = config.getString("Database.Password");
         database = config.getString("Database.Database");
