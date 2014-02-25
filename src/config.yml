@@ -1,2 +1,20 @@
+# If you change any settings, don't forger restart your server.
+
 # Dont change this line!
 version: 1
+
+# If you change this line to true, you will enable Vault economy.
+Vault: false
+
+# Database
+Database:
+    Username: root
+    Password: 'pass'
+    Database: mydb
+    Host: localhost
+    Port: 3306
+    TablesPrefix: mA_
+
+# Language, This searching file by locale. (Messages.locale) (Messages.en, Messages.cz, Messages.sk)
+# 'default' is loaded from code, not from file.
+Locale: default
