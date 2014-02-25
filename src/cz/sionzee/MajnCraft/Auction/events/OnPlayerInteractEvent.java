@@ -22,8 +22,23 @@ public class OnPlayerInteractEvent {
         if (event.getAction() == Action.RIGHT_CLICK_BLOCK) {
             Player p = event.getPlayer();
             String playerName = p.getName();
+            Block block = event.getClickedBlock();
+
+            Material blockType = block.getType();
+
+            if (blockType == Material.SIGN || blockType == Material.SIGN_POST) {
+                Sign sign = (Sign) block.getState();
+                if (sign.getLine(0).equals("[MineAuction]")) {
+                    if (sign.getLine(1).equals(Messages.get("SIGN_OPEN"))) {
+                        if (p.getOpenInventory() == null)
+                            p.openInventory(Storer.auctionMenu);
+                    }
+                }
+            }
+
+
             if (Storer.playernames.contains(playerName)) {
-                Block block = event.getClickedBlock();
+
                 Location blockLocation = block.getLocation();
                 Location upLoc = new Location(blockLocation.getWorld(), blockLocation.getX(), blockLocation.getY() + 1, blockLocation.getZ());
                 upLoc.getWorld().getBlockAt(upLoc).setType(Material.SIGN);
