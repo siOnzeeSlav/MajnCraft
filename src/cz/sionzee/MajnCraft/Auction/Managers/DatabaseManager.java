@@ -37,7 +37,7 @@ public class DatabaseManager {
 
         Configuration config = ConfigurationManager.getConfig();
 
-        EconomyManager.enabled = config.getBoolean("Vault");
+        EconomyManager.enabled = !config.getBoolean("Vault");
 
         username = config.getString("Database.Username");
         password = config.getString("Database.Password");
@@ -67,42 +67,44 @@ public class DatabaseManager {
         /** Successfull in db 
         */
 
-        openConnection();
+        if (!openConnection())
+            return false;
+
 
         try {
             sta = con.createStatement();
         } catch (SQLException e) {
-            Log.$("ERROR: " + e.getMessage());
-            e.printStackTrace();
             return false;
         }
+
+        if (!checkTables())
+            return false;
+
         return true;
     }
 
-    private static void openConnection() {
+    private static boolean openConnection() {
         try {
             con = DriverManager.getConnection(String.format("jdbc:mysql://%s:%d/%s", host, port, database), username, password);
         } catch (SQLException e) {
             Log.$(ErrorMessages.DATABASEWRONGPARAMETERS);
-            Log.$("ERROR: " + e.getMessage());
-            e.printStackTrace();
+            return false;
         }
+        return true;
     }
 
     public static boolean checkTables() {
         try {
 
             if (EconomyManager.isEnabled()) {
-                sta.executeQuery(String.format("CREATE TABLE IF NOT EXISTS `%s`.`%s` ( `id` INT NOT NULL AUTO_INCREMENT, `playername` VARCHAR(32) NULL, `money` INT NULL DEFAULT 0, `access` TINYINT NULL DEFAULT 1, `password` VARCHAR(100) NULL, PRIMARY KEY (`id`)) ENGINE = InnoDB", database, tablePrefix + "players"));
+                sta.executeUpdate(String.format("CREATE TABLE IF NOT EXISTS `%s`.`%s` ( `id` INT NOT NULL AUTO_INCREMENT, `playername` VARCHAR(32) NULL, `money` INT NULL DEFAULT 0, `access` TINYINT NULL DEFAULT 1, `password` VARCHAR(100) NULL, PRIMARY KEY (`id`)) ENGINE = InnoDB", database, tablePrefix + "players"));
             }
-
-            return true;
         } catch (SQLException e) {
             Log.$(ErrorMessages.TABLESCHECKERROR);
-            Log.$("ERROR: " + e.getMessage());
             e.printStackTrace();
             return false;
         }
+        return true;
     }
 
     public static ResultSet executeQuery(String quera) {
