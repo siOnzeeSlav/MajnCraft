@@ -44,21 +44,20 @@ public class CommandHandler implements CommandExecutor {
         String cmd = arg3[0].toLowerCase();
 
         if (!commands.containsKey(cmd)) {
-            p.sendMessage(cmd + " není zaznamenán.");
-            p.sendMessage("/" + arg1.getName() + " help");
-            return false;
+            p.sendMessage(ChatColor.GOLD + "/ma help");
+            return true;
         }
 
         String permission = "MajnCraft." + cmd;
 
         if (!p.hasPermission(permission)) {
-            p.sendMessage("Nemáte oprávnění " + permission);
-            return false;
+            p.sendMessage(Messages.get("COMMANDS_NOPERMISSION") + permission);
+            return true;
         }
 
         commands.get(cmd).onCommand(p, fixArgs(arg3));
 
-        return true;
+        return false;
     }
 
     String[] fixArgs(String[] args) {
