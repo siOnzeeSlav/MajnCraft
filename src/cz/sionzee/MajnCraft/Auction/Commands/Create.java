@@ -8,7 +8,8 @@ public class Create implements ICommand {
 
     @Override
     public boolean onCommand(Player p, String[] args) {
-        Storer.playernames.add(p.getName());
+        if (!Storer.playernamesremove.contains(p.getName()))
+            Storer.playernames.add(p.getName());
         return false;
     }
 
