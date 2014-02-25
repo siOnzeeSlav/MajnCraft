@@ -1,6 +1,7 @@
 package cz.sionzee.MajnCraft.Auction;
 
 import org.bukkit.Material;
+import org.bukkit.block.BlockFace;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -72,6 +73,39 @@ public class Utils {
     public enum Type {
         STRING,
         INT
+    }
+
+    public static BlockFace getClosestFace(float direction) {
+
+        direction = direction % 360;
+
+        if (direction < 0)
+            direction += 360;
+
+        direction = Math.round(direction / 45);
+
+        switch ((int) direction) {
+
+            case 0:
+                return BlockFace.WEST;
+            case 1:
+                return BlockFace.NORTH_WEST;
+            case 2:
+                return BlockFace.NORTH;
+            case 3:
+                return BlockFace.NORTH_EAST;
+            case 4:
+                return BlockFace.EAST;
+            case 5:
+                return BlockFace.SOUTH_EAST;
+            case 6:
+                return BlockFace.SOUTH;
+            case 7:
+                return BlockFace.SOUTH_WEST;
+            default:
+                return BlockFace.WEST;
+
+        }
     }
 
 }
