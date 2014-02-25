@@ -1,6 +1,11 @@
 package cz.sionzee.MajnCraft.Auction;
 
+import cz.sionzee.MajnCraft.Auction.Managers.ConfigurationManager;
+
+import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Project MajnCraft Auctions.
@@ -9,6 +14,46 @@ import java.util.HashMap;
 public class Messages {
 
     public static HashMap<String, String> messages = new HashMap<String, String>();
+
+    public static void initialize() {
+        loadDefault();
+        checkLocale();
+    }
+
+    static void checkLocale() {
+        String locale = ConfigurationManager.getConfig().getString("Locale");
+
+        if (locale.contains("default"))
+            return;
+
+        File file = new File(Index.getInstance().getDataFolder() + "/messages/Messages." + locale);
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            List<String> lines = new ArrayList<String>();
+            try {
+
+                String line = "";
+                while ((line = reader.readLine()) != null) {
+                    lines.add(line);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            for (String line : lines) {
+                String name = line.split("=")[0];
+                String value = line.split("=")[1];
+                if (messages.containsKey(name)) {
+                    messages.put(name, value);
+                }
+            }
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     public static void loadDefault() {
         messages.put("SIGN_OPEN", "Open");
