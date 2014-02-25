@@ -23,4 +23,25 @@ public class Utils {
         return item;
     }
 
+    public static String checkMessage(String message, Object replaceTo, Type type) {
+        switch (type) {
+            case INT:
+                if (message.contains("%d"))
+                    message = String.format(message, replaceTo);
+                else message += replaceTo;
+                break;
+            case STRING:
+                if (message.contains("%s"))
+                    message = String.format(message, replaceTo);
+                else message += replaceTo;
+                break;
+        }
+        return message;
+    }
+
+    public enum Type {
+        STRING,
+        INT
+    }
+
 }
