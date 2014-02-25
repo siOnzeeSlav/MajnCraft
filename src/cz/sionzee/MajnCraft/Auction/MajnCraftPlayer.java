@@ -16,4 +16,8 @@ public class MajnCraftPlayer extends Account {
         return this;
     }
 
+    public Player getPlayer() {
+        return player;
+    }
+
 }
