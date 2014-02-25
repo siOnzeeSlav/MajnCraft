@@ -78,6 +78,7 @@ public class Messages {
         messages.put("HELP_PAY", "Give another player money");
         messages.put("HELP_REMOVE", "Remove auction, press right click on sign");
         messages.put("HELP_TOP", "Show top 10 players");
+        messages.put("COMMANDS_NOPERMISSION", "You dont have permission ");
     }
 
     public static String get(String name) {
