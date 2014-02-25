@@ -18,3 +18,6 @@ Database:
 # Language, This searching file by locale. (Messages.locale) (Messages.en, Messages.cz, Messages.sk)
 # 'default' is loaded from code, not from file.
 Locale: default
+
+# If you set this to true, this will on startup generate main config with messages and set back to false
+Messages: false
