@@ -91,7 +91,7 @@ public class DatabaseManager {
         try {
 
             if (EconomyManager.isEnabled()) {
-                sta.executeQuery(String.format("CREATE TABLE IF NOT EXISTS `%s`.`%s` ( `id` INT NOT NULL AUTO_INCREMENT, `playername` VARCHAR(32) NULL, `money` INT NULL DEFAULT 0, `access` TINYINT NULL DEFAULT 1, PRIMARY KEY (`id`)) ENGINE = InnoDB", database, tablePrefix + "players"));
+                sta.executeQuery(String.format("CREATE TABLE IF NOT EXISTS `%s`.`%s` ( `id` INT NOT NULL AUTO_INCREMENT, `playername` VARCHAR(32) NULL, `money` INT NULL DEFAULT 0, `access` TINYINT NULL DEFAULT 1, `password` VARCHAR(100) NULL, PRIMARY KEY (`id`)) ENGINE = InnoDB", database, tablePrefix + "players"));
             }
 
             return true;
