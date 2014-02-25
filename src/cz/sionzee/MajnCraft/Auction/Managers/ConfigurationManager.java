@@ -1,13 +1,12 @@
 package cz.sionzee.MajnCraft.Auction.Managers;
 
-import java.io.File;
-import java.io.IOException;
-
+import cz.sionzee.MajnCraft.Auction.Index;
 import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
-import cz.sionzee.MajnCraft.Auction.Index;
+import java.io.File;
+import java.io.IOException;
 
 public class ConfigurationManager {
 
@@ -34,6 +33,7 @@ public class ConfigurationManager {
             case CONFIG:
                 if (!file.exists()) {
                     Index.getInstance().saveDefaultConfig();
+                    configuration = YamlConfiguration.loadConfiguration(file);
                     return;
                 }
                 if (c.contains("version")) {
@@ -54,6 +54,8 @@ public class ConfigurationManager {
     static void updateConfigurationFile(FileConfiguration c, ConfigurationType ct) {
         switch (ct) {
             case CONFIG:
+                file.renameTo(new File(file.getAbsolutePath().substring(0, file.getAbsolutePath().lastIndexOf(File.separator)) + "config.yml.old.v" + (configurationVersion - 1)));
+                checkConfigurationVersion(configuration, ConfigurationType.CONFIG);
                 break;
 
         }
