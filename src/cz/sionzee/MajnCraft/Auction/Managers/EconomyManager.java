@@ -29,7 +29,7 @@ public class EconomyManager {
     }
 
     public static int getThisMoney(String name) {
-        DatabaseManager.preparedQuery(name, String.format("SELECT money FROM `%s`.`%s` WHERE `playername`='%s' ENGINE = InnoDB", DatabaseManager.getDatabaseName(), DatabaseManager.getTablePrefix() + "players", name));
+        DatabaseManager.preparedQuery(name, String.format("SELECT money FROM `%s`.`%s` WHERE `playername`='%s'", DatabaseManager.getDatabaseName(), DatabaseManager.getTablePrefix() + "players", name));
         ResultSet rs = null;
         try {
             rs = DatabaseManager.getPreparedQuery(name).executeQuery();
