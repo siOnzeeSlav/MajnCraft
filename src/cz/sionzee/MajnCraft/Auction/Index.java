@@ -7,6 +7,7 @@ import cz.sionzee.MajnCraft.Auction.Managers.VaultManager;
 import cz.sionzee.MajnCraft.Auction.events.OnInventoryClickEvent;
 import cz.sionzee.MajnCraft.Auction.events.OnPlayerInteractEvent;
 import cz.sionzee.MajnCraft.Auction.events.OnPlayerKickJoinQuitEvent;
+import cz.sionzee.MajnCraft.Auction.events.OnPlayerKickJoinQuitEventVault;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -20,9 +21,9 @@ public class Index extends JavaPlugin {
     @Override
     public void onEnable() {
         i = this;
-        Messages.loadDefault();
         PluginManager pm = Bukkit.getPluginManager();
         ConfigurationManager.initialize();
+        Messages.initialize();
         if (!DatabaseManager.initialize()) {
             this.setEnabled(false);
         }
@@ -40,6 +41,7 @@ public class Index extends JavaPlugin {
                 this.setEnabled(false);
             } else {
                 VaultManager.initialize();
+                pm.registerEvents(new OnPlayerKickJoinQuitEventVault(), this);
             }
         }
         Storer.auctionMenu.setItem(0, Utils.createItemStack(Material.CHEST, Messages.get("AUCTION_MENU_COLLECT"), Messages.get("AUCTION_MENU_COLLECT_LORE")));
