@@ -13,46 +13,8 @@ database: false
 softdepend: [Vault]
 
 commands:
-  ban:
-    description: Disallow access to player for using plugin
-    permission: MajnCraft.ban
-    aliases: [b]
-    usage: Syntax error! Simply type /&lt;command&gt <player>; to ban player.
-  password:
-    description: Create password for auction
-    aliases: [pass, p]
-    permission: MajnCraft.password
-    usage: Syntax error! Simply type /&lt;command&gt <password>; to protect auction.
-  create:
-    description: Create auction
-    aliases: [c]
-    permission: MajnCraft.create
-    usage: Syntax error! Simply type /&lt;command&gt; to create auction.
-  money:
-    description: Show how many money player have
-    aliases: [m]
-    permission: MajnCraft.money
-    usage: Syntax error! Simply type /&lt;command&gt; to show money.
-  pay:
-    description: Give player money
-    aliases: [pa]
-    permission: MajnCraft.pay
-    usage: Syntax error! Simply type /&lt;command&gt <player> <amout>; to pay player.
-  top:
-    description: Show top players
-    aliases: [t]
-    permission: MajnCraft.top
-    usage: Syntax error! Simply type /&lt;command&gt; to display players.
-  remove:
-    description: Remove auction
-    aliases: [pa]
-    permission: MajnCraft.remove
-    usage: Syntax error! Simply type /&lt;command&gt; to remove auction.
-  help:
-    description: Show all commands
-    aliases: [h]
-    permission: MajnCraft.help
-    usage: Syntax error! Simply type /&lt;command&gt; to show help.
+  ma:
+    description: Prefix for all commands
 permissions:
   MajnCraft.*:
     description: Gives access to all Auction commands
