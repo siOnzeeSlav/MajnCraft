@@ -1,4 +1,4 @@
-MajnCraft
+MajnCraft Auction
 =========
 
 Developers {
