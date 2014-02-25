@@ -25,7 +25,7 @@ public class OnPlayerKickJoinQuitEventVault implements Listener {
 
         ResultSet rs;
 
-        rs = DatabaseManager.executeQuery(String.format("SELECT COUNT(*) FROM `%s`.`%s` WHERE `playername`='%s' ENGINE = InnoDB", DatabaseManager.getDatabaseName(), DatabaseManager.getTablePrefix() + "players", playerName));
+        rs = DatabaseManager.executeQuery(String.format("SELECT COUNT(*) FROM `%s`.`%s` WHERE `playername`='%s'", DatabaseManager.getDatabaseName(), DatabaseManager.getTablePrefix() + "players", playerName));
 
         boolean access = true;
 
