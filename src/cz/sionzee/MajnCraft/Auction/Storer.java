@@ -1,12 +1,17 @@
 package cz.sionzee.MajnCraft.Auction;
 
+import org.bukkit.Bukkit;
+import org.bukkit.inventory.Inventory;
+
 import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * Project MajnCraft Auctions.
  * Created by siOnzeeSlav on 24.2.14.
  */
 public class Storer {
 
     public static List<String> playernames = new ArrayList<String>();
+    public static Inventory auctionMenu = Bukkit.createInventory(null, 9, "Auction Menu");
 }
