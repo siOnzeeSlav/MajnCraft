@@ -28,9 +28,11 @@ public class Index extends JavaPlugin {
         Messages.initialize();
         if (!DatabaseManager.initialize()) {
             this.setEnabled(false);
+            return;
         }
-        getCommand("ma").setExecutor(new CommandHandler());
-        CommandHandler.initialize();
+        CommandHandler c = new CommandHandler();
+        c.initialize();
+        getCommand("ma").setExecutor(c);
         EconomyManager.initialize();
         if (EconomyManager.isEnabled()) {
             pm.registerEvents(new OnPlayerKickJoinQuitEvent(), this);
@@ -52,7 +54,7 @@ public class Index extends JavaPlugin {
         }
         Storer.auctionMenu.setItem(0, Utils.createItemStack(Material.CHEST, Messages.get("AUCTION_MENU_COLLECT"), Messages.get("AUCTION_MENU_COLLECT_LORE")));
         Storer.auctionMenu.setItem(1, Utils.createItemStack(Material.HOPPER, Messages.get("AUCTION_MENU_GIVEOVER"), Messages.get("AUCTION_MENU_GIVEOVER_LORE")));
-        Storer.auctionMenu.setItem(8, Utils.createItemStack(Material.WOODEN_DOOR, Messages.get("AUCTION_MENU_EXIT"), Messages.get("AUCTION_MENU_EXIT_LORE")));
+        Storer.auctionMenu.setItem(8, Utils.createItemStack(Material.WOOD_DOOR, Messages.get("AUCTION_MENU_EXIT"), Messages.get("AUCTION_MENU_EXIT_LORE")));
         pm.registerEvents(new OnInventoryClickEvent(), this);
         pm.registerEvents(new OnPlayerInteractEvent(), this);
         if (ConfigurationManager.getConfig().getBoolean("Messages")) {
