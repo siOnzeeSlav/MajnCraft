@@ -49,7 +49,19 @@ public class OnPlayerKickJoinQuitEvent implements Listener {
             }
         }
 
-        MajnCraftPlayer mcp = new MajnCraftPlayer(player, playerMoney);
+        rs = DatabaseManager.executeQuery(String.format("SELECT COUNT(*) FROM `%s`.`%s` WHERE `playername`='%s' ENGINE = InnoDB", DatabaseManager.getDatabaseName(), DatabaseManager.getTablePrefix() + "players", playerName));
+
+        boolean access = true;
+
+        try {
+            if (rs.next()) {
+                access = false;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        MajnCraftPlayer mcp = new MajnCraftPlayer(player, playerMoney, access);
 
         EconomyManager.addPlayer(mcp, playerName);
 
