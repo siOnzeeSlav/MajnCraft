@@ -20,6 +20,7 @@ public class Index extends JavaPlugin {
     @Override
     public void onEnable() {
         i = this;
+        Messages.loadDefault();
         PluginManager pm = Bukkit.getPluginManager();
         ConfigurationManager.initialize();
         if (!DatabaseManager.initialize()) {
