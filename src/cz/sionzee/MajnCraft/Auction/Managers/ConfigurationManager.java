@@ -69,4 +69,13 @@ public class ConfigurationManager {
         CONFIG;
     }
 
+    public static void setMessagesFalse() {
+        configuration.set("Messages", false);
+        try {
+            configuration.save(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
